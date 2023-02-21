@@ -143,7 +143,7 @@ Example	 : `INSERT INTO e_commerce.region (id, name)
       +----+--------+-------------+
                 orders
                 
- ## Rename Table :
+ ## Rename Table : "RENAME TABLE" statement is used to rename an existing table.
  
   Syntex : `RENAME TABLE old_table_name TO new_table_name;`
   
@@ -183,7 +183,7 @@ Example	 : `INSERT INTO e_commerce.region (id, name)
       | 10 | Shakil  |   19 |       546416 | agsdfgs     |         3303 |
       +----+---------+------+--------------+-------------+--------------+                 
                        account
-## Select statement :
+## Select statement : "SELECT" statement is used to retrieve data from a database.
 
 Syntex  : `SELECT col_name
 		FROM table_name;`
@@ -208,7 +208,7 @@ Output :
 	| 10 | Shakil  |   19 |
 	+----+---------+------+
 	        accounts
-## All-Select statement :
+## Select_all statement : "*" symbol is used as a wildcard character in the "SELECT" statement to select all columns from a table.
 
 Syntex  : `SELECT *
 		FROM table_name;`
@@ -233,7 +233,7 @@ Outout :
 	| 10 | Shakil  |   19 |       546416 | agsdfgs     |         3303 |
 	+----+---------+------+--------------+-------------+--------------+
 				accounts
-## Distinct :
+## Distinct : "DISTINCT" keyword is used in the "SELECT" statement to retrieve unique or distinct values from a column or set of columns.
 
 Syntex  : `SELECT DISTINCT col_name
 		FROM table_name;`
@@ -264,7 +264,7 @@ Before :
 	|  4 | Sylhet     |
 	+----+------------+
 		region
-## Order by :
+## Order by : "ORDER BY" clause is used in the "SELECT" statement to sort the results of a query in ascending or descending order based on one or more columns.
 
 ascending order:
 
@@ -312,7 +312,8 @@ descending order :
 	|  1 | Sohan   |
 	+----+---------+
 	   accounts
-## Limit :
+	   
+## Limit : "LIMIT" clause is used in the "SELECT" statement to limit the number of rows returned by a query.
 
 Syntex  : `SELECT  col_name
 		FROM table_name LIMIT row_number;`
@@ -331,3 +332,160 @@ Output :
 	|  5 | Himu    |
 	+----+---------+
 	   accounts
+## Where clause : "WHERE" clause is used in the "SELECT" statement to filter the results of a query based on one or more conditions.
+
+Syntex : `SELECT col_name_1,col_name_2
+		FROM table_name
+			WHERE condition;`
+			
+Example : `SELECT id,amount
+		FROM orders
+			WHERE amount >5000;`
+			
+After : 
+
+	+----+--------+
+	| id | amount |
+	+----+--------+
+	|  1 |   1000 |
+	|  2 |   2050 |
+	|  3 |   5000 |
+	|  4 |   1520 |
+	|  5 |   2150 |
+	|  6 |   9000 |
+	|  7 |   1800 |
+	|  8 |   5000 |
+	|  9 |   1520 |
+	| 10 |   2150 |
+	| 11 |   8500 |
+	| 12 |   1750 |
+	| 13 |   1800 |
+	| 14 |   5000 |
+	| 15 |   6200 |
+	| 16 |   2150 |
+	| 17 |   8000 |
+	| 18 |   3600 |
+	+----+--------+
+	   orders
+Before : 
+
+	+----+--------+
+	| id | amount |
+	+----+--------+
+	|  6 |   9000 |
+	| 11 |   8500 |
+	| 15 |   6200 |
+	| 17 |   8000 |
+	+----+--------+
+	   orders
+	  
+## Between : "BETWEEN" operator is used in the "WHERE" clause to retrieve rows that fall within a specified range of values.
+
+Syntex : `SELECT col_name_1,col_name_2
+		FROM table_name
+			WHERE col_name BETWEEN condition;`
+			
+Example : `SELECT * 
+		FROM orders 
+			WHERE amount BETWEEN 1000  AND 3000;`
+			
+Output :
+
+	+----+--------+-------------+
+	| id | amount | customer_id |
+	+----+--------+-------------+
+	|  1 |   1000 |           2 |
+	|  2 |   2050 |           4 |
+	|  4 |   1520 |           1 |
+	|  5 |   2150 |           4 |
+	|  7 |   1800 |           1 |
+	|  9 |   1520 |           8 |
+	| 10 |   2150 |           5 |
+	| 12 |   1750 |          10 |
+	| 13 |   1800 |           1 |
+	| 16 |   2150 |           5 |
+	+----+--------+-------------+
+		  orders 
+
+## Logical Operator (AND , OR, NOT , IN) : logical operators are used to combine multiple conditions in the "WHERE" clause of a "SELECT" statement.
+
+
+(AND) Example : `SELECT * 
+		FROM orders 
+			WHERE amount  = 2050  AND customer_id = 4;`
+			
+			
+Output : 
+
+	+----+--------+-------------+
+	| id | amount | customer_id |
+	+----+--------+-------------+
+	|  2 |   2050 |           4 |
+	+----+--------+-------------+
+		orders
+		
+(OR) Example :  `SELECT * 
+			FROM orders 
+				WHERE amount  = 2050 OR  customer_id = 5;`
+				
+Output : 
+
+	+----+--------+-------------+
+	| id | amount | customer_id |
+	+----+--------+-------------+
+	|  2 |   2050 |           4 |
+	| 10 |   2150 |           5 |
+	| 16 |   2150 |           5 |
+	+----+--------+-------------+
+		 orders
+		 
+(NOT) Example : `SELECT * 
+			FROM region 
+				WHERE name  <> 'Dhaka';`
+				
+After : 
+
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  1 | Dhaka      |
+	|  2 | Cumilla    |
+	|  3 | Chittagong |
+	|  4 | Sylhet     |
+	+----+------------+
+	      region
+	      
+Before :
+
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  2 | Cumilla    |
+	|  3 | Chittagong |
+	|  4 | Sylhet     |
+	+----+------------+
+	      region
+	      
+## AS : "AS" is used to give an alias or a temporary name to a column.
+
+Syntex : `SELECT col_name AS tamp_col_name 
+		FROM table_name;`
+
+Example : `SELECT name  AS district_name 
+		FROM region;`
+		
+Output :
+
+	+---------------+
+	| district_name |
+	+---------------+
+	| Dhaka         |
+	| Cumilla       |
+	| Chittagong    |
+	| Sylhet        |
+	+---------------+
+	    region
+	    
+## Alter table : "ALTER TABLE" statement allows to add, modify, or drop columns, constraints, and indexes.
+
+
