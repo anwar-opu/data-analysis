@@ -66,7 +66,14 @@ Query OK, 0 rows affected (0.11 sec)
 
 ## Data Insert  for all table [e_commerce data insert.txt](https://github.com/anwar-opu/data-analysis/files/10790244/e_commerce.data.insert.txt)
 
-# Show table (all) :
+Syntex   : `INSERT INTO table_name(col_name1,col_name2)
+	   VALUES(value_1, value_2);`
+	   
+Example	 : `INSERT INTO e_commerce.region (id, name)
+	   VALUES (1, 'Dhaka'), (2, 'Cumilla'), (3, 'Chittagong'), (4, 'Sylhet');`
+ 
+
+## Show table (all) :
 
   `SELECT * FROM region;`
   
@@ -138,9 +145,9 @@ Query OK, 0 rows affected (0.11 sec)
                 
  ## Rename Table :
  
-  Syntex : RENAME TABLE old_table_name TO new_table_name;
+  Syntex : `RENAME TABLE old_table_name TO new_table_name;`
   
-  example : RENAME TABLE accounts TO account;
+  Example : `RENAME TABLE accounts TO account;`
   
   After : 
   
@@ -176,3 +183,151 @@ Query OK, 0 rows affected (0.11 sec)
       | 10 | Shakil  |   19 |       546416 | agsdfgs     |         3303 |
       +----+---------+------+--------------+-------------+--------------+                 
                        account
+## Select statement :
+
+Syntex  : `SELECT col_name
+		FROM table_name;`
+
+Example : `SELECT id,name,age 
+		FROM accounts;`
+		
+Output : 
+
+	+----+---------+------+
+	| id | name    | age  |
+	+----+---------+------+
+	|  1 | Sohan   |   23 |
+	|  2 | Salman  |   22 |
+	|  3 | Arman   |   22 |
+	|  4 | Humayun |   22 |
+	|  5 | Himu    |   23 |
+	|  6 | Omi     |   32 |
+	|  7 | Alfi    |   27 |
+	|  8 | Minhaj  |   21 |
+	|  9 | Maruf   |   35 |
+	| 10 | Shakil  |   19 |
+	+----+---------+------+
+	        accounts
+## All-Select statement :
+
+Syntex  : `SELECT *
+		FROM table_name;`
+
+Example : `SELECT * 
+		FROM accounts;`
+		
+Outout :
+
+	+----+---------+------+--------------+-------------+--------------+
+	| id | name    | age  | phone_number | password    | sales_rep_id |
+	+----+---------+------+--------------+-------------+--------------+
+	|  1 | Sohan   |   23 |       123546 | hghdgfjdj   |         3304 |
+	|  2 | Salman  |   22 |       123546 | wrytuyet    |         3301 |
+	|  3 | Arman   |   22 |       123546 | sjerthjsdfg |         3304 |
+	|  4 | Humayun |   22 |       123546 | password    |         3301 |
+	|  5 | Himu    |   23 |       235468 | sdfgdsfgdfg |         3302 |
+	|  6 | Omi     |   32 |        35405 | sfdgsdfg    |         3302 |
+	|  7 | Alfi    |   27 |      3546111 | sdfgsdfg    |         3301 |
+	|  8 | Minhaj  |   21 |      3254163 | sfdsgfsd    |         3303 |
+	|  9 | Maruf   |   35 |      9465555 | sfgsdgsdf   |         3303 |
+	| 10 | Shakil  |   19 |       546416 | agsdfgs     |         3303 |
+	+----+---------+------+--------------+-------------+--------------+
+				accounts
+## Distinct :
+
+Syntex  : `SELECT DISTINCT col_name
+		FROM table_name;`
+
+Example : `SELECT DISTINCT city
+		FROM region;`
+		
+After : 
+
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  1 | Dhaka      |
+	|  2 | Cumilla    |
+	|  3 | Chittagong |
+	|  4 | Sylhet     |
+	|  5 | Dhaka      |
+	+----+------------+
+		region
+Before : 
+
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  1 | Dhaka      |
+	|  2 | Cumilla    |
+	|  3 | Chittagong |
+	|  4 | Sylhet     |
+	+----+------------+
+		region
+## Order by :
+
+ascending order:
+
+	Syntex  : `SELECT  col_name
+			FROM table_name ORDER BY col_name; `
+
+	Example : `SELECT id,name 
+			FROM accounts ORDER BY id; `
+		
+	+----+---------+
+	| id | name    |
+	+----+---------+
+	|  1 | Sohan   |
+	|  2 | Salman  |
+	|  3 | Arman   |
+	|  4 | Humayun |
+	|  5 | Himu    |
+	|  6 | Omi     |
+	|  7 | Alfi    |
+	|  8 | Minhaj  |
+	|  9 | Maruf   |
+	| 10 | Shakil  |
+	+----+---------+
+	    accounts
+	    
+descending order :
+
+	Syntex  : `SELECT  col_name
+			FROM table_name ORDER BY col_name DESC; `
+
+	Example : `SELECT id,name 
+			FROM accounts ORDER BY id DESC; `
+	+----+---------+
+	| id | name    |
+	+----+---------+
+	| 10 | Shakil  |
+	|  9 | Maruf   |
+	|  8 | Minhaj  |
+	|  7 | Alfi    |
+	|  6 | Omi     |
+	|  5 | Himu    |
+	|  4 | Humayun |
+	|  3 | Arman   |
+	|  2 | Salman  |
+	|  1 | Sohan   |
+	+----+---------+
+	   accounts
+## Limit :
+
+Syntex  : `SELECT  col_name
+		FROM table_name LIMIT row_number;`
+
+Example : `SELECT id,name FROM accounts ORDER BY id LIMIT 5; `
+
+Output :
+
+	+----+---------+
+	| id | name    |
+	+----+---------+
+	|  1 | Sohan   |
+	|  2 | Salman  |
+	|  3 | Arman   |
+	|  4 | Humayun |
+	|  5 | Himu    |
+	+----+---------+
+	   accounts
