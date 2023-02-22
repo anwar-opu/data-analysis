@@ -488,4 +488,80 @@ Output :
 	    
 ## Alter table : "ALTER TABLE" statement allows to add, modify, or drop columns, constraints, and indexes.
 
+ADD (column)  :
 
+Syntex : `ALTER TABLE table_name
+	 ADD col_name datatype[size];`
+	 
+Example : `ALTER TABLE accounts
+    	 ADD email VARCHAR(30);`
+	 
+Output : 
+
+	+----+---------+------+--------------+-------------+--------------+-------+
+	| id | name    | age  | phone_number | password    | sales_rep_id | email |
+	+----+---------+------+--------------+-------------+--------------+-------+
+					accounts
+Modify (column) :
+
+Syntex : `ALTER TABLE table_name
+	 CHANGE old_col_name  new_col_name datatype[size];`
+	 
+Example : `ALTER TABLE accounts  
+	 CHANGE email  e_mail VARCHAR(30);`
+	 
+Output : 
+
+	+----+---------+------+--------------+-------------+--------------+--------+
+	| id | name    | age  | phone_number | password    | sales_rep_id | e_mail |
+	+----+---------+------+--------------+-------------+--------------+--------+
+					accounts
+DROP (column) :
+
+Syntex : `ALTER TABLE table_name
+	 DROP col_name;`
+	 
+Example : `ALTER TABLE accounts
+	  DROP e_mail;`
+	 
+Output : 
+
+	+----+---------+------+--------------+-------------+--------------+
+	| id | name    | age  | phone_number | password    | sales_rep_id |
+	+----+---------+------+--------------+-------------+--------------+
+					accounts
+## Null & NOT NULL:
+
+Syntex : SELECT * FROM table_name 
+		WHERE col_name IS NULL;
+
+Example: `SELECT * FROM region WHERE name IS NULL;`
+	
+Output : 
+
+	+----+------+
+	| id | name |
+	+----+------+
+	|  5 | NULL |
+	+----+------+
+	   region
+	   
+NOT NULL :
+
+Syntex : SELECT * FROM table_name 
+		WHERE col_name IS NOT NULL;
+
+Example: `SELECT * FROM region WHERE name IS NOT NULL;`
+	
+Output : 
+
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  1 | Dhaka      |
+	|  2 | Cumilla    |
+	|  3 | Chittagong |
+	|  4 | Sylhet     |
+	+----+------------+
+		region
+## IN & NOT IN :
