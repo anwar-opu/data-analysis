@@ -465,7 +465,43 @@ Before :
 	|  4 | Sylhet     |
 	+----+------------+
 	      region
-	      
+
+IN & NOT IN: 
+
+(IN) 
+
+Syntex : `SELECT col_name FROM 
+	WHERE col_name IN (value1, value2)`
+
+Example : `SELECT * FROM region WHERE name IN('dhaka','sylhet');`
+
+Output :
+
+	+----+--------+
+	| id | name   |
+	+----+--------+
+	|  1 | Dhaka  |
+	|  4 | Sylhet |
+	+----+--------+
+	    region 
+(NOT IN ) 
+
+Syntex : `SELECT col_name FROM 
+	WHERE col_name NOT IN (value1, value2)`
+
+Example : `SELECT * FROM region WHERE name NOT IN('dhaka','sylhet');`
+
+Output :
+
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  2 | Cumilla    |
+	|  3 | Chittagong |
+	+----+------------+
+		region
+
+
 ## AS : "AS" is used to give an alias or a temporary name to a column.
 
 Syntex : `SELECT col_name AS tamp_col_name 
@@ -530,10 +566,10 @@ Output :
 	| id | name    | age  | phone_number | password    | sales_rep_id |
 	+----+---------+------+--------------+-------------+--------------+
 					accounts
-## Null & NOT NULL:
+## Null & Not Null:
 
-Syntex : SELECT * FROM table_name 
-		WHERE col_name IS NULL;
+Syntex : `SELECT * FROM table_name 
+		WHERE col_name IS NULL;`
 
 Example: `SELECT * FROM region WHERE name IS NULL;`
 	
@@ -548,8 +584,8 @@ Output :
 	   
 NOT NULL :
 
-Syntex : SELECT * FROM table_name 
-		WHERE col_name IS NOT NULL;
+Syntex : `SELECT * FROM table_name 
+		WHERE col_name IS NOT NULL;`
 
 Example: `SELECT * FROM region WHERE name IS NOT NULL;`
 	
@@ -564,4 +600,4 @@ Output :
 	|  4 | Sylhet     |
 	+----+------------+
 		region
-## IN & NOT IN :
+
