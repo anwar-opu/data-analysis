@@ -149,23 +149,6 @@ Example	 : `INSERT INTO e_commerce.region (id, name)
   
   Example : `RENAME TABLE accounts TO account;`
   
-  After : 
-  
-      +----+---------+------+--------------+-------------+--------------+
-      | id | name    | age  | phone_number | password    | sales_rep_id |
-      +----+---------+------+--------------+-------------+--------------+
-      |  1 | Sohan   |   23 |       123546 | hghdgfjdj   |         3304 |
-      |  2 | Salman  |   22 |       123546 | wrytuyet    |         3301 |
-      |  3 | Arman   |   22 |       123546 | sjerthjsdfg |         3304 |
-      |  4 | Humayun |   22 |       123546 | password    |         3301 |
-      |  5 | Himu    |   23 |       235468 | sdfgdsfgdfg |         3302 |
-      |  6 | Omi     |   32 |        35405 | sfdgsdfg    |         3302 |
-      |  7 | Alfi    |   27 |      3546111 | sdfgsdfg    |         3301 |
-      |  8 | Minhaj  |   21 |      3254163 | sfdsgfsd    |         3303 |
-      |  9 | Maruf   |   35 |      9465555 | sfgsdgsdf   |         3303 |
-      | 10 | Shakil  |   19 |       546416 | agsdfgs     |         3303 |
-      +----+---------+------+--------------+-------------+--------------+                 
-                       accounts                
   Before :
   
       +----+---------+------+--------------+-------------+--------------+
@@ -182,7 +165,25 @@ Example	 : `INSERT INTO e_commerce.region (id, name)
       |  9 | Maruf   |   35 |      9465555 | sfgsdgsdf   |         3303 |
       | 10 | Shakil  |   19 |       546416 | agsdfgs     |         3303 |
       +----+---------+------+--------------+-------------+--------------+                 
+                       accounts                
+  After :
+  
+      +----+---------+------+--------------+-------------+--------------+
+      | id | name    | age  | phone_number | password    | sales_rep_id |
+      +----+---------+------+--------------+-------------+--------------+
+      |  1 | Sohan   |   23 |       123546 | hghdgfjdj   |         3304 |
+      |  2 | Salman  |   22 |       123546 | wrytuyet    |         3301 |
+      |  3 | Arman   |   22 |       123546 | sjerthjsdfg |         3304 |
+      |  4 | Humayun |   22 |       123546 | password    |         3301 |
+      |  5 | Himu    |   23 |       235468 | sdfgdsfgdfg |         3302 |
+      |  6 | Omi     |   32 |        35405 | sfdgsdfg    |         3302 |
+      |  7 | Alfi    |   27 |      3546111 | sdfgsdfg    |         3301 |
+      |  8 | Minhaj  |   21 |      3254163 | sfdsgfsd    |         3303 |
+      |  9 | Maruf   |   35 |      9465555 | sfgsdgsdf   |         3303 |
+      | 10 | Shakil  |   19 |       546416 | agsdfgs     |         3303 |
+      +----+---------+------+--------------+-------------+--------------+                 
                        account
+		       
 ## Select statement : "SELECT" statement is used to retrieve data from a database.
 
 Syntex  : `SELECT col_name
@@ -208,6 +209,7 @@ Output :
 	| 10 | Shakil  |   19 |
 	+----+---------+------+
 	        accounts
+		
 ## Select_all statement : "*" symbol is used as a wildcard character in the "SELECT" statement to select all columns from a table.
 
 Syntex  : `SELECT *
@@ -241,7 +243,7 @@ Syntex  : `SELECT DISTINCT col_name
 Example : `SELECT DISTINCT city
 		FROM region;`
 		
-After : 
+Before :
 
 	+----+------------+
 	| id | name       |
@@ -253,7 +255,7 @@ After :
 	|  5 | Dhaka      |
 	+----+------------+
 		region
-Before : 
+After :
 
 	+----+------------+
 	| id | name       |
@@ -268,12 +270,14 @@ Before :
 
 ascending order:
 
-	Syntex  : `SELECT  col_name
-			FROM table_name ORDER BY col_name; `
+Syntex  : `SELECT  col_name
+		FROM table_name ORDER BY col_name; `
 
-	Example : `SELECT id,name 
-			FROM accounts ORDER BY id; `
-		
+Example : `SELECT id,name 
+		FROM accounts ORDER BY id; `
+
+Output :
+
 	+----+---------+
 	| id | name    |
 	+----+---------+
@@ -292,11 +296,14 @@ ascending order:
 	    
 descending order :
 
-	Syntex  : `SELECT  col_name
-			FROM table_name ORDER BY col_name DESC; `
+Syntex  : `SELECT  col_name
+		FROM table_name ORDER BY col_name DESC; `
 
-	Example : `SELECT id,name 
-			FROM accounts ORDER BY id DESC; `
+Example : `SELECT id,name 
+		FROM accounts ORDER BY id DESC; `
+	
+Output :
+	
 	+----+---------+
 	| id | name    |
 	+----+---------+
@@ -342,7 +349,7 @@ Example : `SELECT id,amount
 		FROM orders
 			WHERE amount >5000;`
 			
-After : 
+Before :
 
 	+----+--------+
 	| id | amount |
@@ -367,7 +374,7 @@ After :
 	| 18 |   3600 |
 	+----+--------+
 	   orders
-Before : 
+After :
 
 	+----+--------+
 	| id | amount |
@@ -443,7 +450,7 @@ Output :
 			FROM region 
 				WHERE name  <> 'Dhaka';`
 				
-After : 
+Before :
 
 	+----+------------+
 	| id | name       |
@@ -455,7 +462,7 @@ After :
 	+----+------------+
 	      region
 	      
-Before :
+After :
 
 	+----+------------+
 	| id | name       |
@@ -568,6 +575,8 @@ Output :
 					accounts
 ## Null & Not Null:
 
+NULL :
+
 Syntex : `SELECT * FROM table_name 
 		WHERE col_name IS NULL;`
 
@@ -600,4 +609,116 @@ Output :
 	|  4 | Sylhet     |
 	+----+------------+
 		region
+
+## Update record :
+
+Syntex : `UPDATE table_name
+	 SET col_name = update_record
+	 WHERE location/condition ;`
+	 
+Example : UPDATE region
+    	  SET name = 'Noakhali'
+    	  WHERE id = 5;
+	  
+Output : 
+
+ Before  :
+ 
+ 	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  5 | NULL	  |
+	+----+------------+
+ 		region
+ 
+ After :
+ 
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  5 | Noakhali   |
+	+----+------------+
+		region
+		
+## Search Record :
+
+Syntex : `SELECT col_name FROM table_name
+	 	WHERE col_name LIKE 'search_record' ; `
+	 
+Example : `SELECT * FROM accounts WHERE name  LIKE  'Omi'; `
+
+Output :
+
+	+----+------+------+--------------+----------+--------------+
+	| id | name | age  | phone_number | password | sales_rep_id |
+	+----+------+------+--------------+----------+--------------+
+	|  6 | Omi  |   32 |        35405 | sfdgsdfg |         3302 |
+	+----+------+------+--------------+----------+--------------+
+				accounts
+				
+## Delete Record : 
+
+Syntex :`DELETE FROM table_name
+	 WHERE condition / location ;`
+	 
+Example :`DELETE FROM region WHERE id = 5; `
+
+Output :
+
+Before :
+
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  1 | Dhaka      |
+	|  2 | Cumilla    |
+	|  3 | Chittagong |
+	|  4 | Sylhet     |
+	|  5 | Noakhali   |
+	+----+------------+
+	     region
+
+After : 
+
+	+----+------------+
+	| id | name       |
+	+----+------------+
+	|  1 | Dhaka      |
+	|  2 | Cumilla    |
+	|  3 | Chittagong |
+	|  4 | Sylhet     |
+	+----+------------+
+	      region
+	      
+## Function : 
+
+SUM :
+
+Syntex : `SELECT SUM(col_name) FROM table_name ;`
+
+Example : `SELECT SUM(orders.amount) AS total_amount FROM orders;`
+
+Output : 
+
+	+--------------+
+	| total_amount |
+	+--------------+
+	|        68190 |
+	+--------------+
+	     orders
+	    
+AVG : 
+
+Syntex : `SELECT AVG(col_name) FROM table_name ;`
+
+Example : `SELECT AVG(orders.amount) AS average_amount FROM orders;`
+
+Output :
+
+	+----------------+
+	| average_amount |
+	+----------------+
+	|      3788.3333 |
+	+----------------+
+	     orders
 
