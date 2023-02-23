@@ -721,4 +721,78 @@ Output :
 	|      3788.3333 |
 	+----------------+
 	     orders
+	     
+Count : 
 
+Syntex : `SELECT COUNT(col_name) FROM table_name ;`
+
+Example : `SELECT COUNT(orders.customer_id) AS total_orders FROM orders;`
+
+Output :
+
+	+--------------+
+	| total_orders |
+	+--------------+
+	|           18 |
+	+--------------+
+	      orders
+
+Upper/lower case :
+
+Syntex : `SELECT UPPER / LOWER(col_name) FROM table_name ;`
+
+
+Example : `SELECT UPPER(region.name),LOWER(region.name) FROM region; `
+
+Output :
+
+	+--------------------+--------------------+
+	| UPPER(region.name) | LOWER(region.name) |
+	+--------------------+--------------------+
+	| DHAKA              | dhaka              |
+	| CUMILLA            | cumilla            |
+	| CHITTAGONG         | chittagong         |
+	| SYLHET             | sylhet             |
+	+--------------------+--------------------+
+			region
+
+Max/Min :
+
+Syntex : `SELECT MAX / MIN(col_name) FROM table_name ;`
+
+
+Example : `SELECT MAX(amount),MIN(amount) FROM orders;`
+
+Output : 
+
+	+-------------+-------------+
+	| MAX(amount) | MIN(amount) |
+	+-------------+-------------+
+	|        9000 |        1000 |
+	+-------------+-------------+
+		 orders
+
+## Sub Query :
+
+Syntex : `SELECT column(s)
+	  FROM table
+	 WHERE column operator (SELECT column(s) FROM table WHERE condition);`
+	 
+Example : `SELECT orders.amount 
+		FROM orders 
+			WHERE amount > (SELECT AVG(orders.amount) FROM orders) ;`
+			
+Output : 
+
+	+--------+
+	| amount |
+	+--------+
+	|   5000 |
+	|   9000 |
+	|   5000 |
+	|   8500 |
+	|   5000 |
+	|   6200 |
+	|   8000 |
+	+--------+
+	  orders
