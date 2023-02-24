@@ -64,7 +64,8 @@ Query OK, 0 rows affected (0.11 sec)
 |------|-------------------------|-------------|
 | NULL | NULL                    | NULL        |
 
-## Data Insert  for all table [e_commerce data insert.txt](https://github.com/anwar-opu/data-analysis/files/10790244/e_commerce.data.insert.txt)
+## Data Insert  for all table  [e_commerce_data.zip](https://github.com/anwar-opu/data-analysis/files/10823474/e_commerce_data.zip)
+
 
 Syntex   : `INSERT INTO table_name(col_name1,col_name2)
 	   VALUES(value_1, value_2);`
@@ -835,7 +836,7 @@ Output :
 	+----+--------+-------------+
 		 orders 
 		 
-## Join (INNER ) :
+## Join (INNER ) : In an INNER JOIN, only the rows from both tables that match the join condition are returned in the result set. This means that any rows from one table that do not have a matching row in the other table are not included in the result set.
 
 Syntex : `SELECT column_name(s)
 	  FROM table1
@@ -862,15 +863,69 @@ Output :
 	| 10 | Shakil  |         5350 |
 	+----+---------+--------------+
  
- ## Join (LEFT JOIN) : LEFT JOIN is a type of join in SQL that returns all the rows from the left table and matching rows from the right table. If there are no matching rows in the right table, NULL values are returned for all columns in the right table.
+ ## Join (Left) : LEFT JOIN is a type of join in SQL that returns all the rows from the left table and matching rows from the right table. If there are no matching rows in the right table, NULL values are returned for all columns in the right table.
  
  Syntex : `SELECT column_name(s)
 	FROM table1
 		LEFT JOIN table2
 			ON table1.column_name = table2.column_name;`
 			
-Example : 
+Example : `SELECT accounts.id , accounts.name , SUM(orders.amount) AS total_amount 
+		FROM accounts LEFT JOIN orders 
+			ON orders.customer_id = accounts.id 
+				GROUP BY accounts.id;`
+				
+Output : 
 
- 
+	+----+---------+--------------+
+	| id | name    | total_amount |
+	+----+---------+--------------+
+	|  1 | Sohan   |         5120 |
+	|  2 | Salman  |        22500 |
+	|  3 | Arman   |         NULL |
+	|  4 | Humayun |         4200 |
+	|  5 | Himu    |         4300 |
+	|  6 | Omi     |        10000 |
+	|  7 | Alfi    |         9000 |
+	|  8 | Minhaj  |         7720 |
+	|  9 | Maruf   |         NULL |
+	| 10 | Shakil  |         5350 |
+	+----+---------+--------------+
+	
+## join (Right) : RIGHT JOIN is a type of join in SQL that returns all the rows from the right table and matching rows from the left table. If there are no matching rows in the left table, NULL values are returned for all columns in the left table.
+
+Syntex : `SELECT column_name(s)
+		FROM table1
+			RIGHT JOIN table2
+				ON table1.column_name = table2.column_name;`
+				
+Example : `SELECT accounts.id , accounts.name , SUM(orders.amount) AS total_amount 
+		FROM accounts RIGHT JOIN orders
+			ON orders.customer_id = accounts.id 
+				GROUP BY accounts.id;`
+
+
+Output : 
+
+	+------+---------+--------------+
+	| id   | name    | total_amount |
+	+------+---------+--------------+
+	|    2 | Salman  |        22500 |
+	|    4 | Humayun |         4200 |
+	|    1 | Sohan   |         5120 |
+	|    7 | Alfi    |         9000 |
+	|    6 | Omi     |        10000 |
+	|    8 | Minhaj  |         7720 |
+	|    5 | Himu    |         4300 |
+	|   10 | Shakil  |         5350 |
+	+------+---------+--------------+
+
+
+## Join (Natural) :  it joins the two tables based on columns with the same name in both tables.
+
+Syntex : `SELECT *
+		FROM orders
+			NATURAL JOIN customers;`
+
  
  
