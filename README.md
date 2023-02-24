@@ -796,3 +796,81 @@ Output :
 	|   8000 |
 	+--------+
 	  orders
+
+Group Clause :
+
+Syntex : `SELECT column_name, aggregate_function(column_name)
+		FROM table_name
+		WHERE condition
+		GROUP BY column_name; `
+	
+Example : `SELECT orders.customer_id, SUM(orders.amount) FROM e_commerce.orders GROUP BY orders.customer_id;`
+
+Output : 
+
+	+-------------+--------------------+
+	| customer_id | SUM(orders.amount) |
+	+-------------+--------------------+
+	|           1 |               5120 |
+	|           2 |              22500 |
+	|           4 |               4200 |
+	|           5 |               4300 |
+	|           6 |              10000 |
+	|           7 |               9000 |
+	|           8 |               7720 |
+	|          10 |               5350 |
+	+-------------+--------------------+
+			orders
+			
+## Turncate : the TRUNCATE function is used to delete all rows from a table in a single command.
+
+Syntex : `TRUNCATE TABLE table_name;`
+
+Example : `TRUNCATE TABLE orders;`
+
+Output : 
+
+	+----+--------+-------------+
+	| id | amount | customer_id |
+	+----+--------+-------------+
+		 orders 
+		 
+## Join (INNER ) :
+
+Syntex : `SELECT column_name(s)
+	  FROM table1
+	  INNER JOIN table2
+	  ON table1.column_name = table2.column_name;`
+	  
+Example : `SELECT accounts.id , accounts.name , SUM(orders.amount) AS total_amount 
+		FROM accounts INNER JOIN orders 
+			ON orders.customer_id = accounts.id 
+				GROUP BY accounts.id;`
+				
+Output : 
+
+	+----+---------+--------------+
+	| id | name    | total_amount |
+	+----+---------+--------------+
+	|  2 | Salman  |        22500 |
+	|  4 | Humayun |         4200 |
+	|  1 | Sohan   |         5120 |
+	|  7 | Alfi    |         9000 |
+	|  6 | Omi     |        10000 |
+	|  8 | Minhaj  |         7720 |
+	|  5 | Himu    |         4300 |
+	| 10 | Shakil  |         5350 |
+	+----+---------+--------------+
+ 
+ ## Join (LEFT JOIN) : LEFT JOIN is a type of join in SQL that returns all the rows from the left table and matching rows from the right table. If there are no matching rows in the right table, NULL values are returned for all columns in the right table.
+ 
+ Syntex : `SELECT column_name(s)
+	FROM table1
+		LEFT JOIN table2
+			ON table1.column_name = table2.column_name;`
+			
+Example : 
+
+ 
+ 
+ 
