@@ -927,5 +927,25 @@ Syntex : `SELECT *
 		FROM orders
 			NATURAL JOIN customers;`
 
+ ## Joining 3 Tables : 
  
+ Exercise : Find out the individual Sales representative's selling amount with the Sales representative name 
+ 	
+	   ` SELECT MAX(sales_repos.id),MAX(sales_repos.name), SUM(e_commerce.orders.amount)
+		FROM sales_repos LEFT JOIN accounts
+			ON sales_repos.id = accounts.sales_rep_id
+				JOIN orders
+					ON orders.customer_id = accounts.id 
+						GROUP BY accounts.sales_rep_id;`
+						
+Output : 
+
+	+---------------------+-----------------------+-------------------------------+
+	| MAX(sales_repos.id) | MAX(sales_repos.name) | SUM(e_commerce.orders.amount) |
+	+---------------------+-----------------------+-------------------------------+
+	|                3301 | Abul Kalam            |                         35700 |
+	|                3302 | Rahim Ahmed           |                         14300 |
+	|                3303 | Shanaj Akter          |                         13070 |
+	|                3304 | Amit Deb              |                          5120 |
+	+---------------------+-----------------------+-------------------------------+
  
