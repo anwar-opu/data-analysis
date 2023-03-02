@@ -953,9 +953,9 @@ Output :
 
  Exercise : Find out the individual Sales representative's selling amount with the Sales representative name and region name
  
- `SELECT MAX(sales_repos.id),MAX(sales_repos.name), SUM(e_commerce.orders.amount), region.name
- 
-	FROM sales_repos LEFT JOIN accounts
+ 	`SELECT MAX(sales_repos.id),MAX(sales_repos.name), SUM(e_commerce.orders.amount), MAX(region.name)
+ 		FROM sales_repos 
+	LEFT JOIN accounts
 		ON sales_repos.id = accounts.sales_rep_id
 	JOIN orders
 		ON orders.customer_id = accounts.id
