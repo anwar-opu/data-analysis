@@ -931,7 +931,7 @@ Syntex : `SELECT *
  
  Exercise : Find out the individual Sales representative's selling amount with the Sales representative name 
  	
-	   ` SELECT MAX(sales_repos.id),MAX(sales_repos.name), SUM(e_commerce.orders.amount)
+	   ` SELECT sales_repos.id,sales_repos.name, SUM(e_commerce.orders.amount) AS total amount
 		FROM sales_repos LEFT JOIN accounts
 			ON sales_repos.id = accounts.sales_rep_id
 				JOIN orders
@@ -940,20 +940,20 @@ Syntex : `SELECT *
 						
 Output : 
 
-	+---------------------+-----------------------+-------------------------------+
-	| MAX(sales_repos.id) | MAX(sales_repos.name) | SUM(e_commerce.orders.amount) |
-	+---------------------+-----------------------+-------------------------------+
-	|                3301 | Abul Kalam            |                         35700 |
-	|                3302 | Rahim Ahmed           |                         14300 |
-	|                3303 | Shanaj Akter          |                         13070 |
-	|                3304 | Amit Deb              |                          5120 |
-	+---------------------+-----------------------+-------------------------------+
+	+------+--------------+-------------------------------+
+	| id   | name         | total_amount		      |
+	+------+--------------+-------------------------------+
+	| 3301 | Abul Kalam   |                         35700 |
+	| 3302 | Rahim Ahmed  |                         14300 |
+	| 3303 | Shanaj Akter |                         13070 |
+	| 3304 | Amit Deb     |                          5120 |
+	+------+--------------+-------------------------------+
  
 ## join 4 tables : 
 
  Exercise : Find out the individual Sales representative's selling amount with the Sales representative name and region name
  
- 	`SELECT MAX(sales_repos.id),MAX(sales_repos.name), SUM(e_commerce.orders.amount), MAX(region.name)
+ 	`SELECT sales_repos.id, sales_repos.name, SUM(e_commerce.orders.amount) AS total_amount, region.name AS region_name
  		FROM sales_repos 
 	LEFT JOIN accounts
 		ON sales_repos.id = accounts.sales_rep_id
@@ -966,13 +966,35 @@ Output :
 		
 Output : 
 
+	+------+--------------+-------------------------------+-------------+
+	| id   | name         | total_amount		      | region_name |
+	+------+--------------+-------------------------------+-------------+
+	| 3301 | Abul Kalam   |                         35700 | Dhaka       |
+	| 3302 | Rahim Ahmed  |                         14300 | Cumilla     |
+	| 3303 | Shanaj Akter |                         13070 | Chittagong  |
+	| 3304 | Amit Deb     |                          5120 | Sylhet      |
+	+------+--------------+-------------------------------+-------------+
+	
+ Exercise :Find out the individual Sales representative's selling amount with the Sales representative name and only the 'Dhaka' region
+ 
+ 	 `SELECT sales_repos.id, sales_repos.name, SUM(e_commerce.orders.amount) AS total_amount, region.name AS region_name
+		FROM sales_repos 
+	LEFT JOIN accounts
+		ON sales_repos.id = accounts.sales_rep_id
+	JOIN orders
+		ON orders.customer_id = accounts.id
+	JOIN region
+		ON sales_repos.region_id = region.id
+	WHERE region.name = 'Dhaka'
+		GROUP BY accounts.sales_rep_id
+	LIMIT 0,1000;`
+	
+Output : 
+
 	+---------------------+-----------------------+-------------------------------+------------------+
-	| MAX(sales_repos.id) | MAX(sales_repos.name) | SUM(e_commerce.orders.amount) | max(region.name) |
+	| id		      | name		      | total_amount		      | region_name      |
 	+---------------------+-----------------------+-------------------------------+------------------+
 	|                3301 | Abul Kalam            |                         35700 | Dhaka            |
-	|                3302 | Rahim Ahmed           |                         14300 | Cumilla          |
-	|                3303 | Shanaj Akter          |                         13070 | Chittagong       |
-	|                3304 | Amit Deb              |                          5120 | Sylhet           |
 	+---------------------+-----------------------+-------------------------------+------------------+
 	
 
