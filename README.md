@@ -949,3 +949,31 @@ Output :
 	|                3304 | Amit Deb              |                          5120 |
 	+---------------------+-----------------------+-------------------------------+
  
+## join 4 tables : 
+
+ Exercise : Find out the individual Sales representative's selling amount with the Sales representative name and region name
+ 
+ `SELECT MAX(sales_repos.id),MAX(sales_repos.name), SUM(e_commerce.orders.amount), region.name
+ 
+	FROM sales_repos LEFT JOIN accounts
+		ON sales_repos.id = accounts.sales_rep_id
+	JOIN orders
+		ON orders.customer_id = accounts.id
+	JOIN region
+		ON sales_repos.region_id = region.id
+	GROUP BY accounts.sales_rep_id
+		LIMIT 0,1000;`
+		
+Output : 
+
+	+---------------------+-----------------------+-------------------------------+------------------+
+	| MAX(sales_repos.id) | MAX(sales_repos.name) | SUM(e_commerce.orders.amount) | max(region.name) |
+	+---------------------+-----------------------+-------------------------------+------------------+
+	|                3301 | Abul Kalam            |                         35700 | Dhaka            |
+	|                3302 | Rahim Ahmed           |                         14300 | Cumilla          |
+	|                3303 | Shanaj Akter          |                         13070 | Chittagong       |
+	|                3304 | Amit Deb              |                          5120 | Sylhet           |
+	+---------------------+-----------------------+-------------------------------+------------------+
+	
+
+ 
