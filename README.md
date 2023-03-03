@@ -997,5 +997,42 @@ Output :
 	|                3301 | Abul Kalam            |                         35700 | Dhaka            |
 	+---------------------+-----------------------+-------------------------------+------------------+
 	
+Exercise : Find out the highest Sales representative's selling amount with the Sales representative name and region name
 
+	`SELECT sales_repos.id, sales_repos.name, region.name AS region_name, SUM(orders.amount) AS total_amount
+		FROM sales_repos
+	LEFT JOIN  region
+		ON sales_repos.region_id = region.id
+	JOIN accounts ON sales_repos.id = sales_rep_id 
+		JOIN orders ON customer_id = accounts.id
+	GROUP BY accounts.sales_rep_id
+		ORDER BY total_amount DESC
+	LIMIT 1;`
+	
+Output : 
+
+	+------+------------+-------------+--------------+
+	| id   | name       | region_name | total_amount |
+	+------+------------+-------------+--------------+
+	| 3301 | Abul Kalam | Dhaka       |        35700 |
+	+------+------------+-------------+--------------+
  
+Exercise : Find out the lowest Sales representative's selling amount with the Sales representative name and region name
+
+	`SELECT sales_repos.id, sales_repos.name, region.name AS region_name, SUM(orders.amount) AS total_amount
+		FROM sales_repos
+	LEFT JOIN  region
+		ON sales_repos.region_id = region.id
+	JOIN accounts ON sales_repos.id = sales_rep_id 
+		JOIN orders ON customer_id = accounts.id
+	GROUP BY accounts.sales_rep_id
+		ORDER BY total_amount ASC
+	LIMIT 1;`
+	
+Output : 
+
+	+------+----------+-------------+--------------+
+	| id   | name     | region_name | total_amount |
+	+------+----------+-------------+--------------+
+	| 3304 | Amit Deb | Sylhet      |         5120 |
+	+------+----------+-------------+--------------+
