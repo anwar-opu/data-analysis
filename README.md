@@ -219,7 +219,7 @@ Syntax  : `SELECT *
 Example : `SELECT * 
 		FROM accounts;`
 		
-Outout :
+Output :
 
 	+----+---------+------+--------------+-------------+--------------+
 	| id | name    | age  | phone_number | password    | sales_rep_id |
