@@ -67,7 +67,7 @@ Query OK, 0 rows affected (0.11 sec)
 ## Data Insert  for all table  [e_commerce_data.zip](https://github.com/anwar-opu/data-analysis/files/10823474/e_commerce_data.zip)
 
 
-Syntex   : `INSERT INTO table_name(col_name1,col_name2)
+Syntax    : `INSERT INTO table_name(col_name1,col_name2)
 	   VALUES(value_1, value_2);`
 	   
 Example	 : `INSERT INTO e_commerce.region (id, name)
@@ -146,7 +146,7 @@ Example	 : `INSERT INTO e_commerce.region (id, name)
                 
  ## Rename Table : "RENAME TABLE" statement is used to rename an existing table.
  
-  Syntex : `RENAME TABLE old_table_name TO new_table_name;`
+  Syntax : `RENAME TABLE old_table_name TO new_table_name;`
   
   Example : `RENAME TABLE accounts TO account;`
   
@@ -187,7 +187,7 @@ Example	 : `INSERT INTO e_commerce.region (id, name)
 		       
 ## Select statement : "SELECT" statement is used to retrieve data from a database.
 
-Syntex  : `SELECT col_name
+Syntax  : `SELECT col_name
 		FROM table_name;`
 
 Example : `SELECT id,name,age 
@@ -213,7 +213,7 @@ Output :
 		
 ## Select_all statement : "*" symbol is used as a wildcard character in the "SELECT" statement to select all columns from a table.
 
-Syntex  : `SELECT *
+Syntax  : `SELECT *
 		FROM table_name;`
 
 Example : `SELECT * 
@@ -238,7 +238,7 @@ Outout :
 				accounts
 ## Distinct : "DISTINCT" keyword is used in the "SELECT" statement to retrieve unique or distinct values from a column or set of columns.
 
-Syntex  : `SELECT DISTINCT col_name
+Syntax  : `SELECT DISTINCT col_name
 		FROM table_name;`
 
 Example : `SELECT DISTINCT city
@@ -271,7 +271,7 @@ After :
 
 ascending order:
 
-Syntex  : `SELECT  col_name
+Syntax  : `SELECT  col_name
 		FROM table_name ORDER BY col_name; `
 
 Example : `SELECT id,name 
@@ -297,7 +297,7 @@ Output :
 	    
 descending order :
 
-Syntex  : `SELECT  col_name
+Syntax  : `SELECT  col_name
 		FROM table_name ORDER BY col_name DESC; `
 
 Example : `SELECT id,name 
@@ -323,7 +323,7 @@ Output :
 	   
 ## Limit : "LIMIT" clause is used in the "SELECT" statement to limit the number of rows returned by a query.
 
-Syntex  : `SELECT  col_name
+Syntax  : `SELECT  col_name
 		FROM table_name LIMIT row_number;`
 
 Example : `SELECT id,name FROM accounts ORDER BY id LIMIT 5; `
@@ -342,7 +342,7 @@ Output :
 	   accounts
 ## Where clause : "WHERE" clause is used in the "SELECT" statement to filter the results of a query based on one or more conditions.
 
-Syntex : `SELECT col_name_1,col_name_2
+Syntax : `SELECT col_name_1,col_name_2
 		FROM table_name
 			WHERE condition;`
 			
@@ -389,7 +389,7 @@ After :
 	  
 ## Between : "BETWEEN" operator is used in the "WHERE" clause to retrieve rows that fall within a specified range of values.
 
-Syntex : `SELECT col_name_1,col_name_2
+Syntax : `SELECT col_name_1,col_name_2
 		FROM table_name
 			WHERE col_name BETWEEN condition;`
 			
@@ -478,7 +478,7 @@ IN & NOT IN:
 
 (IN) 
 
-Syntex : `SELECT col_name FROM 
+Syntax : `SELECT col_name FROM 
 	WHERE col_name IN (value1, value2)`
 
 Example : `SELECT * FROM region WHERE name IN('dhaka','sylhet');`
@@ -494,7 +494,7 @@ Output :
 	    region 
 (NOT IN ) 
 
-Syntex : `SELECT col_name FROM 
+Syntax : `SELECT col_name FROM 
 	WHERE col_name NOT IN (value1, value2)`
 
 Example : `SELECT * FROM region WHERE name NOT IN('dhaka','sylhet');`
@@ -512,7 +512,7 @@ Output :
 
 ## AS : "AS" is used to give an alias or a temporary name to a column.
 
-Syntex : `SELECT col_name AS tamp_col_name 
+Syntax : `SELECT col_name AS tamp_col_name 
 		FROM table_name;`
 
 Example : `SELECT name  AS district_name 
@@ -534,7 +534,7 @@ Output :
 
 ADD (column)  :
 
-Syntex : `ALTER TABLE table_name
+Syntax : `ALTER TABLE table_name
 	 ADD col_name datatype[size];`
 	 
 Example : `ALTER TABLE accounts
@@ -548,7 +548,7 @@ Output :
 					accounts
 Modify (column) :
 
-Syntex : `ALTER TABLE table_name
+Syntax : `ALTER TABLE table_name
 	 CHANGE old_col_name  new_col_name datatype[size];`
 	 
 Example : `ALTER TABLE accounts  
@@ -562,7 +562,7 @@ Output :
 					accounts
 DROP (column) :
 
-Syntex : `ALTER TABLE table_name
+Syntax : `ALTER TABLE table_name
 	 DROP col_name;`
 	 
 Example : `ALTER TABLE accounts
@@ -578,7 +578,7 @@ Output :
 
 NULL :
 
-Syntex : `SELECT * FROM table_name 
+Syntax : `SELECT * FROM table_name 
 		WHERE col_name IS NULL;`
 
 Example: `SELECT * FROM region WHERE name IS NULL;`
@@ -594,7 +594,7 @@ Output :
 	   
 NOT NULL :
 
-Syntex : `SELECT * FROM table_name 
+Syntax : `SELECT * FROM table_name 
 		WHERE col_name IS NOT NULL;`
 
 Example: `SELECT * FROM region WHERE name IS NOT NULL;`
@@ -613,13 +613,13 @@ Output :
 
 ## Update record :
 
-Syntex : `UPDATE table_name
+Syntax : `UPDATE table_name
 	 SET col_name = update_record
 	 WHERE location/condition ;`
 	 
-Example : UPDATE region
+Example : `UPDATE region
     	  SET name = 'Noakhali'
-    	  WHERE id = 5;
+    	  WHERE id = 5;`
 	  
 Output : 
 
@@ -643,7 +643,7 @@ Output :
 		
 ## Search Record :
 
-Syntex : `SELECT col_name FROM table_name
+Syntax : `SELECT col_name FROM table_name
 	 	WHERE col_name LIKE 'search_record' ; `
 	 
 Example : `SELECT * FROM accounts WHERE name  LIKE  'Omi'; `
@@ -659,7 +659,7 @@ Output :
 				
 ## Delete Record : 
 
-Syntex :`DELETE FROM table_name
+Syntax :`DELETE FROM table_name
 	 WHERE condition / location ;`
 	 
 Example :`DELETE FROM region WHERE id = 5; `
@@ -695,7 +695,7 @@ After :
 
 SUM :
 
-Syntex : `SELECT SUM(col_name) FROM table_name ;`
+Syntax : `SELECT SUM(col_name) FROM table_name ;`
 
 Example : `SELECT SUM(orders.amount) AS total_amount FROM orders;`
 
@@ -710,7 +710,7 @@ Output :
 	    
 AVG : 
 
-Syntex : `SELECT AVG(col_name) FROM table_name ;`
+Syntax : `SELECT AVG(col_name) FROM table_name ;`
 
 Example : `SELECT AVG(orders.amount) AS average_amount FROM orders;`
 
@@ -725,7 +725,7 @@ Output :
 	     
 Count : 
 
-Syntex : `SELECT COUNT(col_name) FROM table_name ;`
+Syntax : `SELECT COUNT(col_name) FROM table_name ;`
 
 Example : `SELECT COUNT(orders.customer_id) AS total_orders FROM orders;`
 
@@ -740,7 +740,7 @@ Output :
 
 Upper/lower case :
 
-Syntex : `SELECT UPPER / LOWER(col_name) FROM table_name ;`
+Syntax : `SELECT UPPER / LOWER(col_name) FROM table_name ;`
 
 
 Example : `SELECT UPPER(region.name),LOWER(region.name) FROM region; `
@@ -759,7 +759,7 @@ Output :
 
 Max/Min :
 
-Syntex : `SELECT MAX / MIN(col_name) FROM table_name ;`
+Syntax : `SELECT MAX / MIN(col_name) FROM table_name ;`
 
 
 Example : `SELECT MAX(amount),MIN(amount) FROM orders;`
@@ -775,7 +775,7 @@ Output :
 
 ## Sub Query :
 
-Syntex : `SELECT column(s)
+Syntax : `SELECT column(s)
 	  FROM table
 	 WHERE column operator (SELECT column(s) FROM table WHERE condition);`
 	 
@@ -800,7 +800,7 @@ Output :
 
 Group Clause :
 
-Syntex : `SELECT column_name, aggregate_function(column_name)
+Syntax : `SELECT column_name, aggregate_function(column_name)
 		FROM table_name
 		WHERE condition
 		GROUP BY column_name; `
@@ -825,7 +825,7 @@ Output :
 			
 ## Turncate : the TRUNCATE function is used to delete all rows from a table in a single command.
 
-Syntex : `TRUNCATE TABLE table_name;`
+Syntax : `TRUNCATE TABLE table_name;`
 
 Example : `TRUNCATE TABLE orders;`
 
@@ -838,7 +838,7 @@ Output :
 		 
 ## Join (INNER ) : In an INNER JOIN, only the rows from both tables that match the join condition are returned in the result set. This means that any rows from one table that do not have a matching row in the other table are not included in the result set.
 
-Syntex : `SELECT column_name(s)
+Syntax : `SELECT column_name(s)
 	  FROM table1
 	  INNER JOIN table2
 	  ON table1.column_name = table2.column_name;`
@@ -865,7 +865,7 @@ Output :
  
  ## Join (Left) : LEFT JOIN is a type of join in SQL that returns all the rows from the left table and matching rows from the right table. If there are no matching rows in the right table, NULL values are returned for all columns in the right table.
  
- Syntex : `SELECT column_name(s)
+ Syntax : `SELECT column_name(s)
 	FROM table1
 		LEFT JOIN table2
 			ON table1.column_name = table2.column_name;`
@@ -894,7 +894,7 @@ Output :
 	
 ## join (Right) : RIGHT JOIN is a type of join in SQL that returns all the rows from the right table and matching rows from the left table. If there are no matching rows in the left table, NULL values are returned for all columns in the left table.
 
-Syntex : `SELECT column_name(s)
+Syntax : `SELECT column_name(s)
 		FROM table1
 			RIGHT JOIN table2
 				ON table1.column_name = table2.column_name;`
@@ -923,7 +923,7 @@ Output :
 
 ## Join (Natural) :  it joins the two tables based on columns with the same name in both tables.
 
-Syntex : `SELECT *
+Syntax : `SELECT *
 		FROM orders
 			NATURAL JOIN customers;`
 
