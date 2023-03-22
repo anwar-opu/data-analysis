@@ -926,8 +926,52 @@ Output :
 Syntax : `SELECT *
 		FROM orders
 			NATURAL JOIN customers;`
+			
+## Join (2 Tables) :
 
- ## Joining 3 Tables : 
+Exercise : Find out Total Values + User names for each individual customer 
+	
+	`SELECT accounts.id,name,SUM(orders.amount) FROM accounts
+		JOIN orders ON accounts.id = customer_id 
+			GROUP BY customer_id
+				ORDER BY id;`
+				
+Output : 
+
+	+----+---------+--------------------+
+	| id | name    | SUM(orders.amount) |
+	+----+---------+--------------------+
+	|  1 | Sohan   |               5120 |
+	|  2 | Salman  |              22500 |
+	|  4 | Humayun |               4200 |
+	|  5 | Himu    |               4300 |
+	|  6 | Omi     |              10000 |
+	|  7 | Alfi    |               9000 |
+	|  8 | Minhaj  |               7720 |
+	| 10 | Shakil  |               5350 |
+	+----+---------+--------------------+
+
+
+Exercise : find out the highest total amount with the username
+
+
+	`SELECT accounts.id,name,SUM(orders.amount)
+		FROM accounts JOIN orders
+			ON accounts.id = customer_id
+		GROUP BY customer_id
+			ORDER BY SUM(orders.amount) DESC
+		LIMIT 1;`
+
+
+Output : 
+
+	+----+--------+--------------------+
+	| id | name   | SUM(orders.amount) |
+	+----+--------+--------------------+
+	|  2 | Salman |              22500 |
+	+----+--------+--------------------+
+
+## Join (3 Tables) : 
  
  Exercise : Find out the individual Sales representative's selling amount with the Sales representative name 
  	
@@ -949,7 +993,7 @@ Output :
 	| 3304 | Amit Deb     |                          5120 |
 	+------+--------------+-------------------------------+
  
-## join 4 tables : 
+## join (4 tables) : 
 
  Exercise : Find out the individual Sales representative's selling amount with the Sales representative name and region name
  
