@@ -835,7 +835,37 @@ Output :
 	| id | amount | customer_id |
 	+----+--------+-------------+
 		 orders 
-		 
+
+## CASE statement : 
+
+Exercise : Find out young and old men, where  age is 23 Greater Than
+ 	   these men are old and less than 23 are young men
+
+Example : `SELECT id, name, age , 
+		CASE 
+	   WHEN  age  < 23 THEN 'Young'
+    		ELSE 'Old'
+	END AS young_old 
+		FROM accounts;`
+		
+Output : 
+
+	+----+---------+------+-----------+
+	| id | name    | age  | young_old |
+	+----+---------+------+-----------+
+	|  1 | Sohan   |   23 | Old       |
+	|  2 | Salman  |   22 | Young     |
+	|  3 | Arman   |   22 | Young     |
+	|  4 | Humayun |   22 | Young     |
+	|  5 | Himu    |   23 | Old       |
+	|  6 | Omi     |   32 | Old       |
+	|  7 | Alfi    |   27 | Old       |
+	|  8 | Minhaj  |   21 | Young     |
+	|  9 | Maruf   |   35 | Old       |
+	| 10 | Shakil  |   19 | Young     |
+	+----+---------+------+-----------+
+
+
 ## Join (INNER ) : In an INNER JOIN, only the rows from both tables that match the join condition are returned in the result set. This means that any rows from one table that do not have a matching row in the other table are not included in the result set.
 
 Syntax : `SELECT column_name(s)
